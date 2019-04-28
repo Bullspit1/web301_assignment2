@@ -3,9 +3,13 @@ import styles from './App.module.css';
 
 import { NavLink, Switch, Route } from 'react-router-dom';
 
+import pokemonImg from './Pages/Pokedex/pokemon-logo.png';
 
 import Pokedex from './Pages/Pokedex/Pokedex';
 import PokemonInfo from './Pages/PokemonInfo/PokemonInfo';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const axios = require('axios');
 
@@ -16,7 +20,7 @@ class App extends Component {
     super(props);
     this.state = {
       posts: [],
-      selectedPokemon: [],
+      loading: true,
     };
   }
 
@@ -24,22 +28,30 @@ componentDidMount() {
     axios.get('https://pokeapi.co/api/v2/pokemon/?limit=151').then(response => {
     const paginatedPokemon = [];
 
-        // console.log(response.data.results)
-        for (let index = 0; index < response.data.results.length; index++) {
-        // console.log(index);
-        // eachPokemonURL.push(response.data.results[index].url);
-        // console.log(response.data.results[index].url);
-        // console.log(response.data.results.length)
+      for (let index = 0; index < response.data.results.length; index++) {
         axios.get(response.data.results[index].url).then(response => {
-            paginatedPokemon.push(response.data);
-        this.setState({
-        posts: paginatedPokemon,
-        });
+          paginatedPokemon.push(response.data);
+            this.setState({
+              posts: paginatedPokemon,
+            });
+              //   const loadingTimer = setTimeout(() => {
+              //     clearTimeout(loadingTimer);
+              //     this.setState({
+              //       loading: false,
+              //       });
+              // },1500) 
         })
         .catch(function (error) {
             console.log(error);
         }) 
-        }
+      } 
+        const loadingTimer = setTimeout(() => {
+          clearTimeout(loadingTimer);
+          this.setState({
+            // posts: paginatedPokemon,
+            loading: false, 
+            });
+        },2000)
     })
     .catch(function (error) {
         // handle error
@@ -50,28 +62,25 @@ componentDidMount() {
 
 
   render() {
-    const { posts } = this.state;
+    const { posts, loading } = this.state;
+    // console.log(posts);
+    // console.log(loading);
     return (
+      <Router>
       <div className={styles.app}>
-        <nav>
-          <ul>
-            <li>
-              <NavLink exact to="/">Pokedex</NavLink>
-            </li>
-            {/* <li>
-              <NavLink exact to="/pokemoninfo">PokemonInfo</NavLink>
-            </li> */}
-          </ul>
-        </nav>
-{/* use the match to save a variable */}
+        <header className={styles.pokemonHeader}>
+          <NavLink exact to="/"><img className={styles.pokemonImage} src={pokemonImg} alt="Pokemon"/></NavLink>
+        </header>
+
           <main>
           <Switch> 
-            <Route path="/" exact render={(routeProps) => (<Pokedex {...routeProps} posts={posts}/>)} />
+            <Route path="/" exact render={(routeProps) => (<Pokedex {...routeProps} posts={posts} loading={loading}/>)} />
             <Route path="/pokemoninfo/:id" exact component={PokemonInfo}/> 
             {/* <PokemonInfo path="/pokemoninfo" exact component={PokemonInfo}/> */}
           </Switch>
         </main>
       </div>
+      </Router>
     );
   }
 }

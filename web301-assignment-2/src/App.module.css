@@ -1,3 +1,18 @@
 /* .app {
   text-align: center;
 } */
+
+.pokemonHeader {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.pokemonImage {
+  width: 250px;
+}
+
+main {
+  width: 100%;
+  text-align: center;
+}

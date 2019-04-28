@@ -1,0 +1,9 @@
+.loadingImg {
+    display: inline-block;
+    width: 200px;
+}
+
+.loading {
+    display: inline-block;
+    height: 100px;
+}

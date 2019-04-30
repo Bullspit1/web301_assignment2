@@ -13,23 +13,18 @@ Enzyme.configure({ adapter: new Adapter() });
 
 
 describe('PokemonInfo Component Tests', () => {
-    // it('renders without crashing', () => {
-    //     const pokemonInfoComponent = shallow(<PokemonInfo />);
-    //     console.log(pokemonInfoComponent);
-    //     // expect(pokedexComponent.length).toBe(1);
-    // });
-    // it('passes the amount of pokemon', () => {
-    //     const pokedexComponent = shallow(<Pokedex posts={[]}/>);
-    //     let mock = new MockAdapter(axios);
-    //     console.log(pokedexComponent.find('a').length);
-    //     // mock.onGet('https://pokeapi.co/api/v2/pokemon/?limit=151').reply(200);
-    //     // console.log(mock.onGet('https://pokeapi.co/api/v2/pokemon/?limit=151'));
-    //     // expect(pokedexComponent.length).toBe(1);
-    // });
-    // it('renders children passed via props', () => {
-    //     pokedexComponent.setProps({
-    //         children: 'Hello World',
-    //     });
-    //     expect(pokedexComponent.text()).toBe('Hello World');
-    // });
+    it('renders without crashing', () => {
+        const match = {
+            params : { 
+                        baseId : 1,
+                     }
+           }  
+
+        const pokemonInfoComponent = shallow(<PokemonInfo match={match}/>);
+        expect(pokemonInfoComponent.length).toBe(1);
+    });
+    it('axios call', () => {
+        let mock = new MockAdapter(axios);
+        mock.onGet('https://pokeapi.co/api/v2/pokemon/?limit=151').reply(200);
+    });
 });

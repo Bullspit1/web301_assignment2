@@ -7,6 +7,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #191b1d;
+  font-family: 'pokemon-font', monospace;
+  -webkit-font-smoothing: none;
 }
 
 code {

@@ -17,10 +17,4 @@ describe('Pokedex Component Tests', () => {
         const pokedexComponent = shallow(<Pokedex posts={[]}/>);
         console.log(pokedexComponent.find('a').length);
     });
-    // it('renders children passed via props', () => {
-    //     pokedexComponent.setProps({
-    //         children: 'Hello World',
-    //     });
-    //     expect(pokedexComponent.text()).toBe('Hello World');
-    // });
 });

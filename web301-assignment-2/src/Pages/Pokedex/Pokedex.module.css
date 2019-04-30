@@ -8,7 +8,13 @@
   .pokemon:hover {
       margin: 10px;
       border-radius: 10%;
-      background-color: #FF0000;
+      background-color: #feca05;
       border: 2px solid #3B4CCA;
       cursor: pointer;
+  }
+
+  h3 {
+    color: #feca05;
+    font-weight: bold;
+    text-shadow: -2px 0 #1d2b5e, 0 2px #1e3265, 1.5px 0 #2f6cb4, 0 -2px #203d73;
   }

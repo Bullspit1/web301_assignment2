@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styles from './App.module.css';
 
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import pokemonImg from './Pages/Pokedex/pokemon-logo.png';
 
@@ -55,7 +54,6 @@ componentDidMount() {
   render() {
     const { posts, loading } = this.state;
     return (
-      <Router>
       <div className={styles.app}>
         <header className={styles.pokemonHeader}>
           <NavLink exact to="/"><img className={styles.pokemonImage} src={pokemonImg} alt="Pokemon"/></NavLink>
@@ -68,7 +66,6 @@ componentDidMount() {
           </Switch>
         </main>
       </div>
-      </Router>
     );
   }
 }

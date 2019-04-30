@@ -50,8 +50,8 @@ render() {
                 <div className={styles.app}>
                 <button className={styles.gobackBtn} type="button" onClick={this.goBack}>Back</button>
                 <h1 className={styles.pokemonName}>{pokemonInfo.name}</h1>
-                <img src={pokemonImage.front_default} alt={pokemonInfo.name}/>
-                <img src={pokemonImage.back_default} alt={pokemonInfo.name}/>
+                <img className={styles.pokemonFront} src={pokemonImage.front_default} alt={pokemonInfo.name}/>
+                <img className={styles.pokemonBack} src={pokemonImage.back_default} alt={pokemonInfo.name}/>
                 <h2>Stats</h2>
                 <ol className={styles.moves}>
                 {pokemonStats.map((stats,index) => {

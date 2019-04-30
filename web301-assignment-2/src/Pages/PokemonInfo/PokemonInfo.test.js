@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import { shallow, mount } from "enzyme";
 import PokemonInfo from "./pokemonInfo";
+import styles from './PokemonInfo.module.css';
 
 import MockAdapter from 'axios-mock-adapter';
 
@@ -22,6 +23,13 @@ describe('PokemonInfo Component Tests', () => {
 
         const pokemonInfoComponent = shallow(<PokemonInfo match={match}/>);
         expect(pokemonInfoComponent.length).toBe(1);
+    });
+    it('button pressed', () => { 
+        const mockCallBack = jest.fn();
+        const pokemonInfoComponent = shallow(<button onClick={mockCallBack}>Back</button>);
+        pokemonInfoComponent.find('button').simulate('click');
+        expect(mockCallBack.mock.calls.length).toEqual(1);
+
     });
     it('axios call', () => {
         let mock = new MockAdapter(axios);

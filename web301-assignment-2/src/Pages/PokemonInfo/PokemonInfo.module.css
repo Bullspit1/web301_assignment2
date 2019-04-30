@@ -39,3 +39,11 @@ h2 {
         cursor: pointer;
         font-size: 15px;
 }
+
+.pokemonFront {
+    width: 20%;
+}
+
+.pokemonBack {
+    width: 20%;
+}

@@ -8,6 +8,8 @@ import { shallow, mount } from "enzyme";
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 // var axios = require('axios');
 
 configure({ adapter: new Adapter() });
@@ -24,7 +26,7 @@ afterEach(() => {
 describe('App Renders Without Crashing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
+    ReactDOM.render(<Router><App /></Router>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

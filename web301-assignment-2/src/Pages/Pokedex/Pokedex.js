@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styles from './Pokedex.module.css';
+import PropTypes from 'prop-types';
 
 import { NavLink } from 'react-router-dom';
 
-// import PokemonInfo from '../PokemonInfo/PokemonInfo';
 import Loading from '../../components/Loading/Loading';
 
 class Pokedex extends Component {
@@ -51,6 +51,11 @@ render() {
           </div>
     );
   }
+}
+
+Pokedex.propTypes = {
+  loading: PropTypes.bool,
+  posts: PropTypes.array,
 }
 
 export default Pokedex;
